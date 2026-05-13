@@ -76,7 +76,7 @@ python calculator.py
 
 # Author
 
-Yash Arora
+Yash Chauhan
 
 ---
 
