@@ -1,0 +1,114 @@
+# GUI Calculator Project in Python
+# Using Tkinter
+
+from tkinter import *
+
+# Create window
+root = Tk()
+root.title("GUI Calculator")
+root.geometry("350x500")
+root.configure(bg="black")
+
+# Variable to store expression
+expression = ""
+
+# Function to update expression
+def press(num):
+    global expression
+    expression = expression + str(num)
+    equation.set(expression)
+
+# Function to evaluate expression
+def equalpress():
+    global expression
+    try:
+        total = str(eval(expression))
+        equation.set(total)
+        expression = total
+    except:
+        equation.set("Error")
+        expression = ""
+
+# Function to clear screen
+def clear():
+    global expression
+    expression = ""
+    equation.set("")
+
+# String variable
+equation = StringVar()
+
+# Entry field
+entry_field = Entry(
+    root,
+    textvariable=equation,
+    font=("Arial", 24),
+    bd=10,
+    relief=RIDGE,
+    justify='right',
+    bg="white"
+)
+
+entry_field.grid(row=0, column=0, columnspan=4, ipadx=8, ipady=25)
+
+# Button design
+btn_font = ("Arial", 18, "bold")
+
+# Row 1
+Button(root, text='7', fg='white', bg='gray20', font=btn_font,
+       command=lambda: press(7), height=2, width=5).grid(row=1, column=0)
+
+Button(root, text='8', fg='white', bg='gray20', font=btn_font,
+       command=lambda: press(8), height=2, width=5).grid(row=1, column=1)
+
+Button(root, text='9', fg='white', bg='gray20', font=btn_font,
+       command=lambda: press(9), height=2, width=5).grid(row=1, column=2)
+
+Button(root, text='/', fg='white', bg='orange', font=btn_font,
+       command=lambda: press('/'), height=2, width=5).grid(row=1, column=3)
+
+# Row 2
+Button(root, text='4', fg='white', bg='gray20', font=btn_font,
+       command=lambda: press(4), height=2, width=5).grid(row=2, column=0)
+
+Button(root, text='5', fg='white', bg='gray20', font=btn_font,
+       command=lambda: press(5), height=2, width=5).grid(row=2, column=1)
+
+Button(root, text='6', fg='white', bg='gray20', font=btn_font,
+       command=lambda: press(6), height=2, width=5).grid(row=2, column=2)
+
+Button(root, text='*', fg='white', bg='orange', font=btn_font,
+       command=lambda: press('*'), height=2, width=5).grid(row=2, column=3)
+
+# Row 3
+Button(root, text='1', fg='white', bg='gray20', font=btn_font,
+       command=lambda: press(1), height=2, width=5).grid(row=3, column=0)
+
+Button(root, text='2', fg='white', bg='gray20', font=btn_font,
+       command=lambda: press(2), height=2, width=5).grid(row=3, column=1)
+
+Button(root, text='3', fg='white', bg='gray20', font=btn_font,
+       command=lambda: press(3), height=2, width=5).grid(row=3, column=2)
+
+Button(root, text='-', fg='white', bg='orange', font=btn_font,
+       command=lambda: press('-'), height=2, width=5).grid(row=3, column=3)
+
+# Row 4
+Button(root, text='0', fg='white', bg='gray20', font=btn_font,
+       command=lambda: press(0), height=2, width=5).grid(row=4, column=0)
+
+Button(root, text='.', fg='white', bg='gray20', font=btn_font,
+       command=lambda: press('.'), height=2, width=5).grid(row=4, column=1)
+
+Button(root, text='=', fg='white', bg='green', font=btn_font,
+       command=equalpress, height=2, width=5).grid(row=4, column=2)
+
+Button(root, text='+', fg='white', bg='orange', font=btn_font,
+       command=lambda: press('+'), height=2, width=5).grid(row=4, column=3)
+
+# Clear button
+Button(root, text='CLEAR', fg='white', bg='red', font=btn_font,
+       command=clear, height=2, width=22).grid(row=5, column=0, columnspan=4)
+
+# Run application
+root.mainloop()
